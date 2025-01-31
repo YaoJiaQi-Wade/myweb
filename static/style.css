@@ -1,0 +1,13 @@
+/* 自訂樣式 */
+.container {
+    max-width: 800px;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.lead {
+    font-size: 1.25rem;
+    color: #666;
+}
