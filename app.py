@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, render_template, request
 from flask_cors import CORS  # 解決跨域問題
-from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 CORS(app)  # 允許所有域訪問（僅供開發測試用）
@@ -15,9 +14,8 @@ CORS(app)  # 允許所有域訪問（僅供開發測試用）
 def home():
     return render_template('index.html')
 
-@app.route('/api/hello')
 def hello():
-    return jsonify({'message': 'Hello World!'})
+    return jsonify({"message": "Hello from Flaskkk!"})
 
 if __name__ == '__main__':
     app.run(debug=True)
