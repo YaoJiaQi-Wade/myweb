@@ -21,17 +21,7 @@ def home():
 
 @app.route('/api/hello')
 def hello():
-    users = get_all_users()  # 调用 models.py 中的函数
-    return jsonify([{"username": user.username, "email": user.email} for user in users])
-
-@app.route('/api/users', methods=['GET', 'POST'])
-def users():
-    if request.method == 'POST':
-        new_user = User(username='testuser', email='test@example.com')
-        db.session.add(new_user)
-        db.session.commit()
-    
-    return jsonify([{"username": user.username, "email": user.email} for user in users])
+    return jsonify({'message': 'Hello World!'})
 
 if __name__ == '__main__':
     app.run(debug=True)
