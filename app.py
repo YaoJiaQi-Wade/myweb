@@ -5,15 +5,12 @@ from models import db, User, get_all_users
 
 app = Flask(__name__)
 CORS(app)  # 允許所有域訪問（僅供開發測試用）
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://mypgsql_4kto_user:CDDkZiGqv6L2GSt5GxfKbjHW2jOkQPnB@dpg-cuf1ghggph6c73foumng-a/mypgsql_4kto'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # 初始化DB
-db.init_app(app)
+
 
 # 创建数据库表
-with app.app_context():
-    db.create_all()
+
     
 @app.route('/')
 def home():
