@@ -20,6 +20,11 @@
                 <button class="btn btn-success" onclick="fetchData()">獲取後端數據</button>
                 <div id="result" class="mt-3"></div>
             </div>
+            <div class="card-body">
+                <p class="lead">這是你的第一個 Flask UII！</p>
+                <button class="btn btn-success" onclick="abc()">cccddd</button>
+                <div id="result" class="mt-3"></div>
+            </div>
         </div>
     </div>
 
@@ -28,6 +33,14 @@
     <script>
         function fetchData() {
             fetch('/api/hello')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerHTML = 
+                        `<div class="alert alert-info">${data.message}</div>`;
+                });
+        }
+        function abc() {
+            fetch('/api/users')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('result').innerHTML = 
