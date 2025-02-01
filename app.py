@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 from flask_cors import CORS  # 解決跨域問題
 from flask_sqlalchemy import SQLAlchemy
 from models import db, User, get_all_users
@@ -22,16 +22,15 @@ def home():
 @app.route('/api/hello')
 def hello():
     users = get_all_users()  # 调用 models.py 中的函数
-    return f"Users: {users}"
+    return jsonify([{"username": user.username, "email": user.email} for user in users])
 
-@app.route('/api/users')
+@app.route('/api/users', methods=['GET', 'POST'])
 def users():
-    new_user = User(username='testuser', email='test@example.com')
-    db.session.add(new_user)
-    db.session.commit()
-
-    users = User.query.all()
-    print(users)
+    if request.method == 'POST':
+        new_user = User(username='testuser', email='test@example.com')
+        db.session.add(new_user)
+        db.session.commit()
+    
     return jsonify([{"username": user.username, "email": user.email} for user in users])
 
 if __name__ == '__main__':
