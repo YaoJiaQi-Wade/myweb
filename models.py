@@ -9,3 +9,6 @@ class User(db.Model):
 
     def __repr__(self):
         return f'<User {self.username}>'
+    
+def get_all_users():
+    return User.query.all()
