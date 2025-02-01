@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, render_template, request
 from flask_cors import CORS  # 解決跨域問題
 from flask_sqlalchemy import SQLAlchemy
-from models import db, User, get_all_users
 
 app = Flask(__name__)
 CORS(app)  # 允許所有域訪問（僅供開發測試用）
